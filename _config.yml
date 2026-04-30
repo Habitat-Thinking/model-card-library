@@ -1,0 +1,82 @@
+title: Model Card Library
+description: >-
+  Mitchell-extended model cards for frontier LLMs across Anthropic,
+  OpenAI, Google, Meta, Mistral, xAI, Cohere, and Alibaba — with
+  per-claim citations and tiered source provenance.
+theme: just-the-docs
+
+url: https://habitat-thinking.github.io/model-card-library
+
+color_scheme: light
+search_enabled: true
+
+aux_links:
+  GitHub Repository:
+    - https://github.com/Habitat-Thinking/model-card-library
+  Plugin (model-cards):
+    - https://github.com/Habitat-Thinking/ai-literacy-superpowers/tree/main/model-cards
+
+aux_links_new_tab: true
+
+footer_content: >-
+  Released under the Apache License 2.0.
+  Cards generated with the
+  <a href="https://github.com/Habitat-Thinking/ai-literacy-superpowers/tree/main/model-cards">model-cards plugin</a>
+  from the
+  <a href="https://github.com/Habitat-Thinking/ai-literacy-superpowers">ai-literacy-superpowers</a>
+  marketplace.
+
+nav_sort: case_insensitive
+
+back_to_top: true
+back_to_top_text: Back to top
+
+# Each card lives at <provider>/<model>.md. Default the parent so
+# just-the-docs renders the per-provider hierarchy without us having
+# to edit every card's frontmatter.
+defaults:
+  - scope:
+      path: "alibaba"
+    values:
+      parent: Alibaba
+  - scope:
+      path: "anthropic"
+    values:
+      parent: Anthropic
+  - scope:
+      path: "cohere"
+    values:
+      parent: Cohere
+  - scope:
+      path: "google"
+    values:
+      parent: Google
+  - scope:
+      path: "meta"
+    values:
+      parent: Meta
+  - scope:
+      path: "mistral"
+    values:
+      parent: Mistral
+  - scope:
+      path: "openai"
+    values:
+      parent: OpenAI
+  - scope:
+      path: "xai"
+    values:
+      parent: xAI
+
+# Don't publish repo-only files as site pages.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - vendor/
+  - .gitignore
+  - .github/
+
+sass:
+  quiet_deps: true

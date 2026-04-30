@@ -1,6 +1,6 @@
 # model-card-library
 
-A first-version Mitchell-extended model card library — **14 frontier
+A first-version Mitchell-extended model card library — **13 frontier
 LLMs** across Anthropic, OpenAI, Google, Meta, Mistral, xAI, Cohere,
 and Alibaba, each documented with per-claim citations and tiered
 source provenance.
@@ -8,6 +8,14 @@ source provenance.
 Seeded on 2026-04-30 with the [`model-cards`](https://github.com/Habitat-Thinking/ai-literacy-superpowers/tree/main/model-cards)
 plugin from the [`ai-literacy-superpowers`](https://github.com/Habitat-Thinking/ai-literacy-superpowers)
 marketplace.
+
+**📖 Browse the cards online:** <https://habitat-thinking.github.io/model-card-library/>
+
+The site mirrors this repo's contents with searchable navigation,
+provider-grouped indexes, and the full About / honesty-rules
+explanation. Card sources of truth remain the markdown files in this
+repo; the site is regenerated from them on every push to `main` via
+the [Pages workflow](.github/workflows/pages.yml).
 
 ---
 
