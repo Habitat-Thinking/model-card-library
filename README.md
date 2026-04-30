@@ -159,17 +159,58 @@ preserve the existing card as a starting point.
 ## Refresh cadence
 
 Model providers update their documentation regularly. A card
-researched in April 2026 may be out of date by July. Suggested
-refresh cadence:
+researched in April 2026 may be out of date by July.
 
-- **Quarterly** — re-run `/model-card seed --force` to refresh every
-  card. The agent re-applies the tiered source strategy from scratch.
-- **Per-model on-demand** — run `/model-card create <name> --provider <provider>`
-  with `load-existing-as-base` to refresh a single card without
-  touching the rest.
+### Scheduled quarterly refresh (automated)
+
+A scheduled remote agent re-researches every card in this library
+**quarterly** and opens a PR with the refreshed content for human
+review.
+
+- **Schedule**: 09:00 UTC on the 28th of January, April, July, and
+  October.
+- **Next firing**: **2026-07-28** (then 2026-10-28, 2027-01-28, ...).
+- **Routine ID**: `trig_01LAodr397c1waBeo2wfLtSm` (managed at
+  <https://claude.ai/code/routines>).
+- **What the agent does**:
+  1. Walks the repo to inventory existing cards (does **not** rely on
+     the upstream seed list, so deprecated entries like the original
+     `openai/o4` refusal don't get re-attempted each quarter).
+  2. Re-researches each model via the same tiered source strategy
+     used at seeding (provider docs → HuggingFace → arXiv → web).
+  3. Preserves the same 10-section Mitchell-extended structure,
+     citation discipline, and existence-check honesty rule.
+  4. Opens a PR titled `refresh: quarterly card refresh YYYY-MM-DD`
+     with per-card outcomes summarised.
+  5. **Does not merge.** A maintainer reviews and merges manually,
+     so any provider-side regression (e.g., a model moving from
+     ASL-2 to ASL-3) is seen by a human before it lands on `main`.
+- **Cards that disappear** (model retired, renamed, or moved): the
+  refresh agent leaves the existing card in place and appends a
+  `## Refresh status: REFUSED on YYYY-MM-DD` block under the
+  frontmatter, so the historical record is preserved even when a
+  model goes away.
+- **Operating cost**: re-researching ~13 cards per quarter is the
+  default scope. The schedule can be paused or scope adjusted by
+  editing the routine in the dashboard.
+
+### Manual refresh (anytime)
+
+You can also refresh on demand without waiting for the quarterly
+agent:
+
+- **Per-model** — run `/model-card create <name> --provider <provider>`
+  from the `model-cards` plugin with `load-existing-as-base` to
+  refresh a single card. Best for spot-checks when a provider has
+  just announced a major change.
+- **Whole library** — re-run `/model-card seed --force --out .` from
+  inside a clone of this repo. The `--force` flag overwrites every
+  card; without it, existing cards are skipped.
 - **Roadmap** — `/model-card refresh <name>` (issue
   [#235](https://github.com/Habitat-Thinking/ai-literacy-superpowers/issues/235))
-  will provide a non-interactive refresh flow once shipped.
+  will provide a dedicated non-interactive refresh flow once
+  shipped, replacing the `seed --force` pattern with something
+  more granular.
 
 ---
 
