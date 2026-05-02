@@ -33,8 +33,15 @@ back_to_top_text: Back to top
 
 # Each card lives at <provider>/<model>.md. Default the parent so
 # just-the-docs renders the per-provider hierarchy without us having
-# to edit every card's frontmatter.
+# to edit every card's frontmatter. The first entry sets layout: default
+# globally so every page is wrapped in the just-the-docs theme — without
+# this, card pages render as bare HTML fragments with no sidebar.
 defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
   - scope:
       path: "alibaba"
     values:
