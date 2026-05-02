@@ -1,5 +1,6 @@
 ---
 title: gpt-5-mini
+parent: OpenAI
 model_name: openai/gpt-5-mini
 provider: OpenAI
 model_version: gpt-5-mini-2025-08-07

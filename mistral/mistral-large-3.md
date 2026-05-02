@@ -1,5 +1,6 @@
 ---
 title: mistral-large-3
+parent: Mistral
 model_name: mistral/mistral-large-3
 provider: Mistral
 model_version: Mistral Large 3 (v25.12 / 2512)

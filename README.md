@@ -227,21 +227,30 @@ agent:
 Cards in this repo carry **two layers of frontmatter**: the
 Mitchell-extended model-card schema (`model_name`, `provider`,
 `model_version`, `last_researched`, `card_version`, `researcher`,
-`sources`) and a Jekyll-nav key (`title`) used by `just-the-docs` to
-render the side-nav entry under the provider parent.
+`sources`) and Jekyll-nav keys (`title`, `parent`) used by
+`just-the-docs` to render the side-nav entry nested under the correct
+provider page.
 
 The upstream `model-cards` plugin emits only the model-card schema —
 it doesn't know or care about Jekyll. After running
-`/model-card create <name>` against this repo, **add `title: <model-name>`
-to the new card's frontmatter** before committing, e.g.:
+`/model-card create <name>` against this repo, **add `title:` and
+`parent:` to the new card's frontmatter** before committing, e.g.:
 
 ```yaml
 ---
 title: gpt-5.5
+parent: OpenAI
 model_name: openai/gpt-5.5
 provider: OpenAI
 ...
 ```
+
+The `parent:` value matches the `title:` of the corresponding provider
+index page (`openai/index.md` declares `title: OpenAI`). Cards declare
+this explicitly per-card rather than inheriting it from `_config.yml`
+defaults — the inheritance approach was tried and caused a self-parent
+loop on provider index pages that broke the side nav (see PR #6/#7
+history).
 
 A CI gate enforces this. The validator (also runnable locally) lives at
 [`scripts/validate_cards.py`](scripts/validate_cards.py) and runs in

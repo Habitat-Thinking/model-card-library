@@ -1,5 +1,6 @@
 ---
 title: gpt-5
+parent: OpenAI
 model_name: openai/gpt-5
 provider: OpenAI
 model_version: gpt-5

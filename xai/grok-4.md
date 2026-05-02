@@ -1,5 +1,6 @@
 ---
 title: grok-4
+parent: xAI
 model_name: xai/grok-4
 provider: xAI
 model_version: grok-4 (model card last updated 2025-08-20)

@@ -1,5 +1,6 @@
 ---
 title: claude-opus-4-7
+parent: Anthropic
 model_name: anthropic/claude-opus-4-7
 provider: Anthropic
 model_version: claude-opus-4-7

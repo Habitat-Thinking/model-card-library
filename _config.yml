@@ -31,49 +31,17 @@ nav_sort: case_insensitive
 back_to_top: true
 back_to_top_text: Back to top
 
-# Each card lives at <provider>/<model>.md. Default the parent so
-# just-the-docs renders the per-provider hierarchy without us having
-# to edit every card's frontmatter. The first entry sets layout: default
-# globally so every page is wrapped in the just-the-docs theme — without
-# this, card pages render as bare HTML fragments with no sidebar.
+# Apply layout: default to every page (cards, provider indexes, home,
+# about) so just-the-docs wraps each page in the theme. Per-page values
+# in front matter override these defaults — see provider index.mds and
+# the card files for examples. Card parent: values are declared
+# per-card in their own front matter for clarity.
 defaults:
   - scope:
       path: ""
       type: pages
     values:
       layout: default
-  - scope:
-      path: "alibaba"
-    values:
-      parent: Alibaba
-  - scope:
-      path: "anthropic"
-    values:
-      parent: Anthropic
-  - scope:
-      path: "cohere"
-    values:
-      parent: Cohere
-  - scope:
-      path: "google"
-    values:
-      parent: Google
-  - scope:
-      path: "meta"
-    values:
-      parent: Meta
-  - scope:
-      path: "mistral"
-    values:
-      parent: Mistral
-  - scope:
-      path: "openai"
-    values:
-      parent: OpenAI
-  - scope:
-      path: "xai"
-    values:
-      parent: xAI
 
 # Don't publish repo-only files as site pages.
 exclude:
