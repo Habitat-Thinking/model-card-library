@@ -26,7 +26,16 @@ REQUIRED_MODEL_CARD_KEYS = {
     "card_version", "researcher", "sources",
 }
 
-REQUIRED_JEKYLL_KEYS = {"title"}
+REQUIRED_JEKYLL_KEYS = {"title", "parent"}
+
+# Map of provider directory name → expected `parent:` value.
+# A card under openai/ must declare `parent: OpenAI` so just-the-docs nests it
+# under the OpenAI provider page in the side nav.
+EXPECTED_PARENT_BY_DIR = {
+    "alibaba": "Alibaba", "anthropic": "Anthropic", "cohere": "Cohere",
+    "google": "Google", "meta": "Meta", "mistral": "Mistral",
+    "openai": "OpenAI", "xai": "xAI",
+}
 
 
 def find_cards(root: Path) -> list[Path]:
@@ -68,6 +77,13 @@ def validate_card(card: Path) -> list[str]:
     title = fm.get("title")
     if title and not isinstance(title, str):
         errors.append(f"title must be a string, got {type(title).__name__}")
+
+    expected_parent = EXPECTED_PARENT_BY_DIR.get(card.parent.name)
+    if expected_parent and fm.get("parent") and fm["parent"] != expected_parent:
+        errors.append(
+            f"parent must be '{expected_parent}' for cards under {card.parent.name}/, "
+            f"got '{fm['parent']}'"
+        )
 
     return errors
 

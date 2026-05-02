@@ -1,5 +1,6 @@
 ---
 title: gemini-2.5-pro
+parent: Google
 model_name: google/gemini-2.5-pro
 provider: Google
 model_version: gemini-2.5-pro

@@ -3,7 +3,6 @@ title: Meta
 layout: default
 nav_order: 6
 has_children: true
-parent:
 ---
 
 # Meta

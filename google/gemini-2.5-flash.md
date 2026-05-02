@@ -1,5 +1,6 @@
 ---
 title: gemini-2.5-flash
+parent: Google
 model_name: google/gemini-2.5-flash
 provider: Google
 model_version: gemini-2.5-flash (GA, knowledge cutoff January 2025)
