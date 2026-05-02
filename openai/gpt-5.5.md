@@ -1,4 +1,5 @@
 ---
+title: gpt-5.5
 model_name: openai/gpt-5.5
 provider: OpenAI
 model_version: gpt-5.5 (snapshot gpt-5.5-2026-04-23)

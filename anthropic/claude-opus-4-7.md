@@ -1,4 +1,5 @@
 ---
+title: claude-opus-4-7
 model_name: anthropic/claude-opus-4-7
 provider: Anthropic
 model_version: claude-opus-4-7

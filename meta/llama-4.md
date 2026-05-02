@@ -1,4 +1,5 @@
 ---
+title: llama-4
 model_name: meta/llama-4
 provider: Meta
 model_version: Llama 4 (Scout 17B-16E, Maverick 17B-128E; Behemoth in preview)

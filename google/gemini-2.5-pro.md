@@ -1,4 +1,5 @@
 ---
+title: gemini-2.5-pro
 model_name: google/gemini-2.5-pro
 provider: Google
 model_version: gemini-2.5-pro
