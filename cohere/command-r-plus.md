@@ -1,4 +1,5 @@
 ---
+title: command-r-plus
 model_name: cohere/command-r-plus
 provider: Cohere
 model_version: command-r-plus-08-2024 (latest live); command-r-plus-04-2024 (original, deprecated 2025-09-15)

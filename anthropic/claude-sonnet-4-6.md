@@ -1,4 +1,5 @@
 ---
+title: claude-sonnet-4-6
 model_name: anthropic/claude-sonnet-4-6
 provider: Anthropic
 model_version: claude-sonnet-4-6

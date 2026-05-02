@@ -1,4 +1,5 @@
 ---
+title: o4-mini
 model_name: openai/o4-mini
 provider: OpenAI
 model_version: o4-mini

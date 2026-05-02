@@ -1,4 +1,5 @@
 ---
+title: claude-haiku-4-5
 model_name: anthropic/claude-haiku-4-5
 provider: Anthropic
 model_version: claude-haiku-4-5-20251001

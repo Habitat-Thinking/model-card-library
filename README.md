@@ -222,6 +222,41 @@ agent:
 
 ---
 
+## Site-specific frontmatter (Jekyll)
+
+Cards in this repo carry **two layers of frontmatter**: the
+Mitchell-extended model-card schema (`model_name`, `provider`,
+`model_version`, `last_researched`, `card_version`, `researcher`,
+`sources`) and a Jekyll-nav key (`title`) used by `just-the-docs` to
+render the side-nav entry under the provider parent.
+
+The upstream `model-cards` plugin emits only the model-card schema —
+it doesn't know or care about Jekyll. After running
+`/model-card create <name>` against this repo, **add `title: <model-name>`
+to the new card's frontmatter** before committing, e.g.:
+
+```yaml
+---
+title: gpt-5.5
+model_name: openai/gpt-5.5
+provider: OpenAI
+...
+```
+
+A CI gate enforces this. The validator (also runnable locally) lives at
+[`scripts/validate_cards.py`](scripts/validate_cards.py) and runs in
+[`.github/workflows/validate-cards.yml`](.github/workflows/validate-cards.yml)
+on every PR that touches a card. To check before pushing:
+
+```bash
+python3 scripts/validate_cards.py
+```
+
+If it fails, the error message tells you exactly which card is missing
+which key.
+
+---
+
 ## License
 
 This library — the cards, the README, and the seeding log — is

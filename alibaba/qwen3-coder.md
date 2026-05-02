@@ -1,4 +1,5 @@
 ---
+title: qwen3-coder
 model_name: alibaba/qwen3-coder
 provider: Alibaba
 model_version: qwen3-coder (family; flagship Qwen3-Coder-480B-A35B-Instruct, plus Qwen3-Coder-30B-A3B-Instruct, Qwen3-Coder-Flash, Qwen3-Coder-Plus, Qwen3-Coder-Next variants)
