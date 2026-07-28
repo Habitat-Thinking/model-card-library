@@ -4,43 +4,43 @@ parent: Cohere
 model_name: cohere/command-r-plus
 provider: Cohere
 model_version: command-r-plus-08-2024 (latest live); command-r-plus-04-2024 (original, deprecated 2025-09-15)
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://docs.cohere.com/docs/command-r-plus
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://docs.cohere.com/docs/models
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://docs.cohere.com/docs/responsible-use
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://docs.cohere.com/docs/rate-limits
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://cohere.com/pricing
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://cohere.com/blog/command-r-plus-microsoft-azure
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://docs.cohere.com/changelog/commandr-082024-ft
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/CohereForAI/c4ai-command-r-plus
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/CohereLabs/c4ai-command-r-plus-08-2024
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: n/a (no dedicated Command R+ release paper on arXiv; arXiv 2404.06654 is RULER, unrelated)
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://docs.oracle.com/en-us/iaas/Content/generative-ai/cohere-command-r-plus-08-2024.htm
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: Cohere/command-r-plus
@@ -55,7 +55,7 @@ API model identifiers per Cohere docs: `command-r-plus-08-2024` (live), `command
 
 ## 2. Intended Use
 
-Per Cohere's published statements, Command R+ is designed for "complex RAG workflows and multi-step tool use" and is recommended for sophisticated enterprise applications requiring advanced retrieval and agent-based reasoning [T1.1]. The Cohere docs note that **Command A** is now recommended for most modern use cases, positioning Command R+ as a still-supported but no-longer-flagship enterprise model [T1.1].
+Per Cohere's published statements, Command R+ is designed for "complex RAG workflows and multi-step tool use" and is recommended for sophisticated enterprise applications requiring advanced retrieval and agent-based reasoning [T1.1]. The Cohere docs note that **Command A** is now recommended for most modern use cases, positioning Command R+ as a still-supported but no-longer-flagship enterprise model [T1.1]. As of the July 2026 quarterly refresh, **Command A+** has superseded Command A as Cohere's flagship, with Command R+ further back in the recommended lineup [T4.1].
 
 Primary intended uses (per provider): conversational AI, retrieval-augmented generation with citations, single-step and multi-step tool/function calling, multilingual applications, code interaction (explanation and rewriting), reasoning, summarisation, and question answering [T1.1][T2.1][T2.2].
 
@@ -126,6 +126,14 @@ The 08-2024 update has not been re-benchmarked against the Open LLM Leaderboard 
 
 ## 9. Caveats and Recommendations
 
+**Refresh note (July 2026):** Tier-1 provider sources returned HTTP 403
+at refresh time. Operational updates below were verified via web search
+(tier-4). Key changes since April 2026: (1) Command R+ has been deprecated
+on Oracle OCI (April 2026) and on Microsoft Azure AI Foundry (May 2026);
+the Cohere first-party API remains active [T4.1]. (2) Command A+ has
+superseded Command A as Cohere's flagship model [T4.1]. Pricing is
+unchanged.
+
 **What this card cannot tell you:**
 
 - Detailed training corpora, dataset sizes, token counts, or data-filtering procedures (not publicly available — common for proprietary frontier models).
@@ -143,12 +151,14 @@ The 08-2024 update has not been re-benchmarked against the Open LLM Leaderboard 
 
 - Strong fit: enterprise RAG with citations, multi-step agentic tool use, multilingual chat in the 10 optimised languages, code interaction (low temperature recommended).
 - Weaker fit: long-tail languages outside the 23 trained languages; high-stakes individual decisions (explicitly prohibited by Cohere); domains requiring per-subgroup fairness guarantees (no published disaggregation).
-- Migration note: the alias `command-r-plus` and `command-r-plus-04-2024` were deprecated September 15, 2025 [T1.2]. Production users should pin `command-r-plus-08-2024` explicitly; for new builds, Cohere now recommends Command A for most modern use cases [T1.1].
+- **Platform availability**: Command R+ was deprecated on Oracle OCI in April 2026 and on Microsoft Azure AI Foundry in May 2026; verify availability before deploying on those platforms [T4.1]. The Cohere first-party API (`command-r-plus-08-2024`) remains available as of 2026-07-28.
+- Migration note: the alias `command-r-plus` and `command-r-plus-04-2024` were deprecated September 15, 2025 [T1.2]. Production users should pin `command-r-plus-08-2024` explicitly; for new builds, Cohere now recommends Command A+ as its flagship model [T4.1].
 - For self-hosting: use the Hugging Face release `CohereLabs/c4ai-command-r-plus-08-2024`; note CC-BY-NC license — non-commercial only [T2.1][T2.2].
 
 ## 10. Operational Details
 
-- **Pricing (as of 2026-04-30):** `command-r-plus-08-2024` — $2.50 / 1M input tokens, $10.00 / 1M output tokens. `command-r-plus-04-2024` (deprecated) — $3.00 / 1M input, $15.00 / 1M output [T1.5].
+- **Pricing (as of 2026-07-28, unchanged from April 2026):** `command-r-plus-08-2024` — $2.50 / 1M input tokens, $10.00 / 1M output tokens. `command-r-plus-04-2024` (deprecated) — $3.00 / 1M input, $15.00 / 1M output [T1.5].
+- **Platform deprecation status**: Deprecated on Oracle OCI (April 2026) and Microsoft Azure AI Foundry (May 2026); Cohere first-party API remains active [T4.1].
 - **Context window:** 128,000 tokens input; 4,000 tokens maximum output (both 04-2024 and 08-2024 variants) [T1.1][T1.2].
 - **Knowledge cutoff:** Cohere docs list June 1, 2024 (with a separate statement that training data goes through February 2023; see §9 caveat) [T1.1].
 - **Supported APIs/SDKs:** Cohere Chat endpoint (native API); Amazon Bedrock (`cohere.command-r-plus-v1:0`); Azure AI Foundry; Oracle OCI Generative AI (`cohere.command-r-plus v1.2`) [T1.2][T4.1]. Cohere provides Python, TypeScript, Java, and Go SDKs (per Cohere docs site nav). OpenAI Chat Completions compatibility: not publicly available as a documented surface.

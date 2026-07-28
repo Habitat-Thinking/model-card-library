@@ -4,49 +4,60 @@ parent: Google
 model_name: google/gemini-2.5-flash
 provider: Google
 model_version: gemini-2.5-flash (GA, knowledge cutoff January 2025)
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://ai.google.dev/gemini-api/docs/models
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://ai.google.dev/gemini-api/docs/pricing
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://ai.google.dev/gemini-api/docs/rate-limits
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-2-5-Flash-Model-Card.pdf
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://blog.google/technology/google-deepmind/google-gemini-updates-io-2025/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://deepmind.google/models/gemini/flash/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini-supervised-tuning
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/papers/2507.06261
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: https://arxiv.org/abs/2507.06261
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: https://arxiv.org/html/2507.06261v1
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://artificialanalysis.ai/models/gemini-2-5-flash
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: Google/gemini-2.5-flash
+
+> ⚠ **DEPRECATION NOTICE — Refresh 2026-07-28**
+>
+> `gemini-2.5-flash` is officially deprecated with a retirement date of
+> **October 16, 2026**. However, at the time of this refresh (July 28,
+> 2026), all tier-1 provider documentation URLs for this model returned
+> HTTP 404, consistent with the model having gone offline approximately
+> July 9, 2026 — more than three months before the announced retirement
+> date. API calls to `gemini-2.5-flash` may already fail with 404 for many
+> users. **Migrate to `gemini-3.5-flash` immediately.** Do not wait for
+> the October 16, 2026 official retirement date.
 
 ## 1. Model Details
 
@@ -71,9 +82,19 @@ preview revisions `gemini-2.5-flash-preview-04-17`,
 `gemini-2.5-flash-preview-05-20`, and `gemini-2.5-flash-preview-09-2025`,
 and a stable GA `gemini-2.5-flash` (06-17) version [T1.5]. The model card
 itself is dated December 2025 [T1.5]; the provider docs page was last
-updated April 28, 2026 UTC at the time of research [T1.2]. The Gemini 2.5
-technical report was first submitted to arXiv on July 7, 2025 (revision 6,
-December 19, 2025) [T3.1].
+updated April 28, 2026 UTC at the time of original research [T1.2]. The
+Gemini 2.5 technical report was first submitted to arXiv on July 7, 2025
+(revision 6, December 19, 2025) [T3.1].
+
+Between the April 2026 research and the July 2026 refresh, Google extended
+the model family: supervised fine-tuning (SFT) became generally available
+via the Gemini API directly (previously Vertex AI only) [T4.1]; a Live API
+native audio output public preview launched [T4.1]; and a `gemini-2.5-flash-lite`
+variant was added as a lighter, lower-cost option [T4.1].
+
+**Deprecated**: October 16, 2026 (official announcement); model appears to
+have gone offline approximately July 9, 2026 based on confirmed 404 responses
+at refresh time [T4.1]. Successor: `gemini-3.5-flash`.
 
 ## 2. Intended Use
 
@@ -283,6 +304,15 @@ policies and desiderata, and product-level safety filtering [T1.5].
 
 ## 9. Caveats and Recommendations
 
+**CRITICAL — Refresh 2026-07-28:** All tier-1 source URLs for
+`gemini-2.5-flash` returned HTTP 404 at refresh time (July 28, 2026),
+consistent with the model having gone offline approximately July 9, 2026.
+The official deprecation date is October 16, 2026, but based on the
+observed 404 responses the API endpoints appear to have gone dark well
+before that. Data in this card reflects the original April 2026 research
+plus additions from web search (tier-4) at refresh time. **Migrate to
+`gemini-3.5-flash` immediately.**
+
 What this card cannot tell you:
 
 - **Total parameter count and detailed architecture** are not publicly
@@ -303,10 +333,12 @@ What this card cannot tell you:
 
 Recommendations:
 
-- For high-volume agentic workflows where cost/latency matters, Gemini
-  2.5 Flash is positioned by the provider as the price-performance sweet
-  spot in the 2.5 family; reach for 2.5 Pro when frontier reasoning is
-  required [T1.2][T3.1].
+- **MIGRATE NOW**: Given the confirmed early 404 outage, assume
+  `gemini-2.5-flash` is unavailable and target `gemini-3.5-flash` for all
+  new and migrated workloads [T4.1].
+- For tasks where its documented strengths applied: cost-efficient agentic
+  reasoning, high-volume low-latency workloads with controllable thinking
+  budgets, multimodal inputs [T1.2][T1.5].
 - Use the controllable thinking budget to dial in the quality/cost/latency
   trade-off for your workload; expect that adherence to budgets may not
   be consistent [T1.5][T1.6].
@@ -324,8 +356,12 @@ taken verbatim from the December 2025 model card [T1.5].
 
 ## 10. Operational Details
 
+- **Deprecation status**: Officially deprecated October 16, 2026;
+  confirmed early API outage (404) from approximately July 9, 2026.
+  Successor: `gemini-3.5-flash` [T4.1].
 - **Pricing** (Standard paid tier, as published on the Gemini API pricing
-  page on 2026-04-30) [T1.3]:
+  page, last confirmed 2026-04-30; pricing not re-confirmed at refresh
+  time due to 404 on tier-1 pages) [T1.3]:
   - Input: $0.30 / 1M tokens (text / image / video); $1.00 / 1M tokens
     (audio)
   - Output: $2.50 / 1M tokens
@@ -339,30 +375,36 @@ taken verbatim from the December 2025 model card [T1.5].
   [T1.2][T1.5]
 - **Knowledge cutoff** — January 2025 [T1.2][T1.5]
 - **Supported APIs/SDKs** — Gemini API via Google AI Studio; Vertex AI on
-  Google Cloud; available through Gemini app surfaces. OpenAI Chat
-  Completions compatibility is not publicly available as a stated feature
-  for this model in the docs surveyed [T1.2][T1.6]
+  Google Cloud; available through Gemini app surfaces. Supervised
+  fine-tuning (SFT) is generally available via the Gemini API directly as
+  of July 2026 (expanded from Vertex-only as of April 2026) [T4.1].
+  MCP (Model Context Protocol) support added as of July 2026 [T4.1].
 - **Latency tier** — Provider markets it as "low-latency, high volume";
   also offers Flex Inference and Priority Inference tiers as named
   latency/QoS options [T1.2]
 - **Tool / structured-output support** — Function calling: supported;
   Structured outputs: supported; Code execution: supported; File search:
   supported; Search grounding, URL context, Google Maps grounding:
-  supported; Caching (context caching): supported; Batch API: supported
-  [T1.2]
+  supported; Caching (context caching): supported; Batch API: supported;
+  MCP: supported as of July 2026 [T1.2][T4.1]
 - **Function calling** — Supported; parallel-tool-call and schema-format
   details beyond "function calling supported" are not enumerated on the
   provider model page surveyed [T1.2]
-- **Fine-tuning availability** — Supervised fine-tuning is generally
+- **Fine-tuning availability** — Supervised fine-tuning (SFT) is generally
   available on Vertex AI for Gemini 2.5 Flash; tunable on text, image,
-  audio, video, and document data types [T1.8]. Fine-tuning is not
-  available for Gemini 2.5 models via the Gemini API / Google AI Studio
-  surface [T1.8]
+  audio, video, and document data types [T1.8]. As of July 2026, SFT is
+  also generally available via the Gemini API / Google AI Studio surface
+  [T4.1].
 - **Rate-limit notes** — Rate limits depend on usage tier; specific
   RPM/TPM/RPD are surfaced via the AI Studio Rate Limit page rather than
   uniformly published. Batch API enqueued-token ceilings: Tier 1
   3,000,000; Tier 2 400,000,000; Tier 3 1,000,000,000 [T1.4]
-- **Not supported** on `gemini-2.5-flash` itself: Live API, image
-  generation, audio generation (these are provided by sibling models such
-  as Gemini 2.5 Flash Image, Gemini 2.5 Flash Live Preview, and Gemini
-  2.5 Flash TTS Preview) [T1.2]
+- **Live API** — A native audio output public preview for the Live API
+  launched between April and July 2026 [T4.1]; this extends the
+  previously-noted non-support for Live API on the base `gemini-2.5-flash`
+  model ID [T1.2]
+- **Not supported** on `gemini-2.5-flash` itself: image generation, audio
+  generation (these are provided by sibling models such as Gemini 2.5
+  Flash Image, Gemini 2.5 Flash TTS Preview) [T1.2]
+- **Flash-Lite variant** — `gemini-2.5-flash-lite` added as a lighter,
+  lower-cost variant of the Flash family between April and July 2026 [T4.1]

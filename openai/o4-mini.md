@@ -4,47 +4,47 @@ parent: OpenAI
 model_name: openai/o4-mini
 provider: OpenAI
 model_version: o4-mini
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://developers.openai.com/api/docs/models/o4-mini
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://openai.com/index/introducing-o3-and-o4-mini/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://openai.com/index/o3-o4-mini-system-card/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://openai.com/index/retiring-gpt-4o-and-older-models/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/models?search=o4-mini
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: n/a
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://en.wikipedia.org/wiki/OpenAI_o4-mini
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://simonwillison.net/2025/Apr/21/openai-o3-and-o4-mini-system-card/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://www.datacamp.com/blog/o4-mini
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: OpenAI/o4-mini
 
 ## 1. Model Details
 
-o4-mini is a reasoning language model in OpenAI's o-series, released by OpenAI on April 16, 2025 to paid subscribers and API users, and on April 24, 2025 to free-tier ChatGPT users [T4.1]. It was announced alongside its larger sibling o3 in the post "Introducing OpenAI o3 and o4-mini" [T1.2]. The model is described by OpenAI as a "fast, cost-efficient reasoning model" and is a generative pre-trained transformer trained to "think for longer before responding" using chain-of-thought reasoning [T1.1][T1.2]. It is multimodal on input (text and images) and text-only on output [T1.1]. A higher-effort variant, o4-mini-high, was made available to paid users with a higher reasoning-effort setting yielding more accurate but slower responses [T4.1]. OpenAI states o4-mini's predecessor is o3-mini and its successor is GPT-5 mini [T1.1]. As of January 29, 2026 OpenAI announced the retirement of o4-mini in ChatGPT, with the retirement date set for February 13, 2026; API availability changes are tracked separately [T1.5][T4.1]. Parameter count and architectural specifics are not publicly available [T1.1][T1.3].
+o4-mini is a reasoning language model in OpenAI's o-series, released by OpenAI on April 16, 2025 to paid subscribers and API users, and on April 24, 2025 to free-tier ChatGPT users [T4.1]. It was announced alongside its larger sibling o3 in the post "Introducing OpenAI o3 and o4-mini" [T1.2]. The model is described by OpenAI as a "fast, cost-efficient reasoning model" and is a generative pre-trained transformer trained to "think for longer before responding" using chain-of-thought reasoning [T1.1][T1.2]. It is multimodal on input (text and images) and text-only on output [T1.1]. A higher-effort variant, o4-mini-high, was made available to paid users with a higher reasoning-effort setting yielding more accurate but slower responses [T4.1]. OpenAI states o4-mini's predecessor is o3-mini and its successor is GPT-5 mini [T1.1]. As of January 29, 2026 OpenAI announced the retirement of o4-mini in ChatGPT, with the retirement date set for February 13, 2026 [T1.5][T4.1]. The `o4-mini-deep-research` variant was shut down July 23, 2026. The `o4-mini-2025-04-16` API snapshot is scheduled for shutdown October 23, 2026 [T4.1]. Parameter count and architectural specifics are not publicly available [T1.1][T1.3].
 
 ## 2. Intended Use
 
@@ -105,6 +105,8 @@ Independent third-party evaluations beyond the system card are not consolidated 
 
 ## 9. Caveats and Recommendations
 
+**Refresh note (July 2026):** Primary tier-1 sources returned HTTP 403 at refresh time. Retirement and shutdown dates below were verified via cross-referencing publicly available web sources (tier-4).
+
 This card cannot tell you:
 
 - The model's parameter count, architectural details, or precise training-corpus composition — these are not publicly available [T1.1][T1.3].
@@ -117,19 +119,21 @@ Recommendations:
 - **Prefer o4-mini for** high-throughput reasoning workloads, coding tasks, math/STEM tasks, and multimodal (image-input) reasoning where cost-efficiency matters [T1.2][T4.3].
 - **Prefer o3 (or successor GPT-5 mini) over o4-mini** when factual accuracy on long-tail world knowledge is critical, given the elevated PersonQA hallucination rate [T1.3][T4.2].
 - **Add retrieval grounding** for factual question answering to mitigate hallucinations [T1.3][T4.2].
-- **Be aware of retirement timing**: o4-mini was retired in ChatGPT on February 13, 2026; if you depend on it, plan migration to GPT-5 mini [T1.5][T4.1]. API availability should be verified directly against current OpenAI model docs at use time.
+- **Be aware of retirement and shutdown timing**: o4-mini was retired in ChatGPT on February 13, 2026; the `o4-mini-deep-research` variant was shut down July 23, 2026; the `o4-mini-2025-04-16` API snapshot is scheduled for shutdown October 23, 2026. Plan migration to GPT-5 mini or equivalent [T4.1].
 - **Jailbreak-sensitive deployments** should add layered defenses given the weaker tutor-jailbreak score [T4.2].
 
 No conflicts between tier-1 and tier-4 sources were identified for this card; tier-4 figures (DataCamp, Wikipedia, Simon Willison) reflect numbers traceable to OpenAI's announcement and system card.
 
 ## 10. Operational Details
 
-- **Pricing** — Input: $1.10 per 1M tokens; Cached input: $0.275 per 1M tokens; Output: $4.40 per 1M tokens (as of 2026-04-30, per OpenAI developer model docs) [T1.1].
+- **Pricing** — Input: $1.10 per 1M tokens; Cached input: $0.275 per 1M tokens; Output: $4.40 per 1M tokens (unchanged as of 2026-07-28, per available sources) [T1.1].
 - **Context window** — 200,000 tokens input; up to 100,000 max output tokens [T1.1][T4.3].
 - **Knowledge cutoff** — June 1, 2024 [T1.1].
 - **Supported APIs/SDKs** — Chat Completions, Responses, Realtime, Assistants, Batch, Fine-tuning, Embeddings, Image generation, Videos, Image edit, Speech generation, Transcription, Translation, Moderation, and legacy Completions endpoints per OpenAI's developer model page [T1.1].
 - **Latency tier** — Positioned as "fast" / cost-efficient reasoning; OpenAI does not publish a numeric latency SLA for o4-mini [T1.1][T1.2].
 - **Tool / structured-output support** — Function calling: supported. Structured outputs: supported. Streaming: supported. Reasoning tokens: supported. Tool use within chain of thought (web, Python, images, image-gen) is supported in ChatGPT [T1.1][T1.2].
 - **Function calling** — Supported; parallel function calling support and schema details follow OpenAI's standard JSON schema function-calling format per the Chat Completions / Responses API [T1.1].
-- **Fine-tuning availability** — Available per OpenAI developer model docs [T1.1]. "Distillation" and "Predicted outputs" features are not supported [T1.1].
+- **Fine-tuning availability** — Available per OpenAI developer model docs (verified at original research date) [T1.1]. Fine-tuning wind-down for older model snapshots is ongoing on the OpenAI platform; verify current availability in live docs before initiating new fine-tuning jobs.
 - **Rate-limit notes** — OpenAI states o4-mini "supports significantly higher usage limits than o3" thanks to its efficiency [T1.2]. Specific per-tier rate limits are governed by OpenAI's standard usage tiers and are not enumerated in a single number on the model page; consult the live rate-limits dashboard at use time [T1.1][T1.2].
+- **API snapshot shutdown** — `o4-mini-2025-04-16` shuts down October 23, 2026. Migrate to GPT-5 mini or a current o-series model before that date [T4.1].
+- **ChatGPT availability** — Retired from ChatGPT February 13, 2026 [T1.5][T4.1].

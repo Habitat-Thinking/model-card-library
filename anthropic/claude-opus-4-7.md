@@ -4,43 +4,43 @@ parent: Anthropic
 model_name: anthropic/claude-opus-4-7
 provider: Anthropic
 model_version: claude-opus-4-7
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://platform.claude.com/docs/en/docs/about-claude/models
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://platform.claude.com/docs/en/about-claude/pricing
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://www.anthropic.com/news/claude-opus-4-7
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://www.anthropic.com/claude/opus
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://www.anthropic.com/system-cards
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://www.anthropic.com/claude-opus-4-7-system-card
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/Anthropic
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: n/a
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://aws.amazon.com/blogs/aws/introducing-anthropics-claude-opus-4-7-model-in-amazon-bedrock/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://www.helpnetsecurity.com/2026/04/16/claude-opus-4-7-released/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: Anthropic/claude-opus-4-7
@@ -62,6 +62,11 @@ compared with Opus 4.6 [T1.2][T1.3]. Parameter count is **Not publicly
 available** — Anthropic does not disclose this for Claude models. The
 HuggingFace `Anthropic` organization page lists no public models, so no
 HuggingFace model card exists for this model [T2.1].
+
+As of the July 2026 quarterly refresh, `claude-opus-4-7` appears in the
+"Legacy models" section of Anthropic's model overview, having been superseded
+by Claude Opus 5 (`claude-opus-5`) as Anthropic's recommended flagship model
+[T1.1].
 
 ## 2. Intended Use
 
@@ -243,10 +248,12 @@ Recommendations for use:
 - For high-stakes domains (cybersecurity, biological, controlled-
   substances harm-reduction), apply human-in-the-loop review and consult
   the system card's domain-specific findings [T1.4][T4.2].
+- For frontier-grade capabilities, Anthropic now recommends Claude Opus 5
+  (`claude-opus-5`) [T1.1].
 
 ## 10. Operational Details
 
-- **Pricing** (as of 2026-04-30, per Anthropic pricing page) [T1.3]:
+- **Pricing** (as of 2026-07-28, per Anthropic pricing page) [T1.3]:
   - Input: $5 / million tokens
   - Output: $25 / million tokens
   - 5-minute cache write: $6.25 / MTok; 1-hour cache write: $10 / MTok
@@ -267,14 +274,15 @@ Recommendations for use:
   feature for this model.
 - **Latency tier**: "Moderate" per Anthropic's comparative-latency
   classification; Priority Tier supported [T1.1].
-- **Tool / structured-output support**: Tool use supported (346 tool-use
-  system-prompt tokens for `auto`/`none`; 313 for `any`/`tool`) [T1.3].
-  Server-side tools include bash, code execution, text editor, web search
-  ($10 / 1,000 searches), web fetch (no additional cost), and computer use
-  [T1.3]. Adaptive thinking is the only thinking-on mode; extended-thinking
-  budgets removed [T1.2]. Sampling parameters (`temperature`, `top_p`,
-  `top_k`) are rejected with HTTP 400 [T1.2]. Thinking content is omitted
-  from responses by default; opt in via `display: "summarized"` [T1.2].
+- **Tool / structured-output support**: Tool use supported (675 tool-use
+  system-prompt tokens for `auto`/`none`; 804 for `any`/`tool`, reflecting
+  Opus 4.7's new tokenizer) [T1.3]. Server-side tools include bash, code
+  execution, text editor, web search ($10 / 1,000 searches), web fetch (no
+  additional cost), and computer use [T1.3]. Adaptive thinking is the only
+  thinking-on mode; extended-thinking budgets removed [T1.2]. Sampling
+  parameters (`temperature`, `top_p`, `top_k`) are rejected with HTTP 400
+  [T1.2]. Thinking content is omitted from responses by default; opt in
+  via `display: "summarized"` [T1.2].
 - **Function calling**: Supported via the standard Claude tools schema;
   parallel tool use supported (per Claude 4 family conventions) [T1.3].
   Schema format: JSON Schema in the `tools` parameter [T1.3].
@@ -291,3 +299,6 @@ Recommendations for use:
 - **Adaptive thinking**: Yes; off by default [T1.1][T1.2].
 - **Vision**: Yes; high-resolution images up to 2576px / 3.75MP with 1:1
   pixel-to-coordinate mapping [T1.2].
+- **Deprecation status**: Legacy as of July 2026; superseded by Claude
+  Opus 5 on Anthropic's recommended-models list. No sunset/API-retirement
+  date announced as of 2026-07-28 [T1.1].

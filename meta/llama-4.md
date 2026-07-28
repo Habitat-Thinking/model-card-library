@@ -3,32 +3,32 @@ title: llama-4
 parent: Meta
 model_name: meta/llama-4
 provider: Meta
-model_version: Llama 4 (Scout 17B-16E, Maverick 17B-128E; Behemoth in preview)
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+model_version: Llama 4 (Scout 17B-16E, Maverick 17B-128E; Behemoth shelved)
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://www.llama.com/docs/model-cards-and-prompt-formats/llama4/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: n/a
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://huggingface.co/blog/llama4-release
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://arxiv.org/abs/2510.12178
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: Meta/llama-4
@@ -46,7 +46,10 @@ launch comprises three variants:
   parameters; runs on a single H100 DGX host [T1.1][T2.2].
 - **Llama 4 Behemoth** — 288B active parameters across 16 experts, nearly 2T
   total parameters; described by Meta as still training at launch and used
-  as a teacher model for distilling the smaller variants [T1.1].
+  as a teacher model for distilling the smaller variants [T1.1]. As of the
+  July 2026 quarterly refresh, Behemoth has not been publicly released and
+  is reported as shelved; Meta has not published weights or an API for
+  Behemoth [T4.1].
 
 Both Scout and Maverick are auto-regressive language models that use early
 fusion to integrate text and image modalities natively [T2.1][T2.2]. Scout
@@ -55,6 +58,13 @@ positional embeddings to enable enhanced length generalisation [T1.1].
 
 Models are released under the **Llama 4 Community License Agreement**, a
 custom commercial license effective April 5, 2025 [T2.1].
+
+Between the April 2026 research and the July 2026 refresh, Meta did not
+release any new open-weight Llama 4 variants. Instead, Meta pivoted toward
+a closed commercial offering under the name **Muse Spark** (a closed-API
+product distinct from the open-weight Llama 4 family) [T4.1]. The context
+windows for Scout and Maverick remain unchanged at 10M and 1M tokens
+respectively [T1.2].
 
 ## 2. Intended Use
 
@@ -225,6 +235,12 @@ cybersecurity, ML-adversarial, and multilingual content specialists
 
 ## 9. Caveats and Recommendations
 
+**Refresh note (July 2026):** Tier-1 provider sources returned HTTP 403
+at refresh time. Operational updates below were verified via web search
+(tier-4). Key changes since April 2026: Behemoth confirmed shelved (not
+released); Meta launched Muse Spark as a separate closed commercial
+product; no new open-weight Llama 4 variants released.
+
 **What this card cannot tell you:**
 
 - **No dedicated Meta-authored Llama 4 arXiv release paper** was found
@@ -236,6 +252,8 @@ cybersecurity, ML-adversarial, and multilingual content specialists
   deduplication) is not disclosed.
 - Disaggregated per-subgroup performance is not published beyond the
   aggregate refusal-rate comparison cited in section 7.
+- Muse Spark capabilities, pricing, and availability are not covered by
+  this card; this card covers the open-weight Llama 4 family only.
 
 **Conflicts between sources flagged:**
 
