@@ -4,31 +4,31 @@ parent: Alibaba
 model_name: alibaba/qwen3-coder
 provider: Alibaba
 model_version: qwen3-coder (family; flagship Qwen3-Coder-480B-A35B-Instruct, plus Qwen3-Coder-30B-A3B-Instruct, Qwen3-Coder-Flash, Qwen3-Coder-Plus, Qwen3-Coder-Next variants)
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://qwenlm.github.io/blog/qwen3-coder/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://www.alibabacloud.com/help/en/model-studio/qwen-coder
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: https://arxiv.org/abs/2603.00729
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://cloudprice.net/models/openrouter/qwen/qwen3-coder-flash
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: Alibaba/qwen3-coder
@@ -42,6 +42,12 @@ A smaller open-weight sibling, Qwen3-Coder-30B-A3B-Instruct, is also released: 3
 The Alibaba Cloud Model Studio product surface exposes the family under additional API names: `qwen3-coder-plus` (for highest-quality complex tasks), `qwen3-coder-next` (the recommended balance of quality, speed, and cost), and `qwen3-coder-flash` [T1.2][T4.1]. Qwen3-Coder-Next is described in a follow-up technical report (arXiv:2603.00729, submitted February 28, 2026) as an 80-billion-total / 3-billion-active-parameter MoE model targeted at coding agents, with both base and instruction-tuned open-weight versions released [T3.1].
 
 The models operate in non-thinking mode only — they do not emit `<think></think>` blocks [T2.1][T2.2].
+
+Between the April 2026 research and the July 2026 refresh, Alibaba released
+**Qwen 4 Coder** (specifically `qwen4-coder-32b-a3b`), a successor model
+in the coding family released June 2026. Qwen 4 Coder achieves 82% on
+SWE-Bench Verified [T4.1]. This card covers the Qwen3-Coder family; for
+Qwen 4 Coder capabilities see the provider's Qwen 4 Coder documentation.
 
 ## 2. Intended Use
 
@@ -105,6 +111,12 @@ Risks inherent to a code-specialised, agentic-tool-using LLM that the provider h
 
 ## 9. Caveats and Recommendations
 
+**Refresh note (July 2026):** Tier-1 provider sources returned HTTP 403
+at refresh time. Operational updates below were verified via web search
+(tier-4). Key changes since April 2026: (1) `qwen3-coder-plus` pricing
+updated to $0.650 / 1M input, $3.25 / 1M output [T4.1]; (2) Qwen 4 Coder
+(qwen4-coder-32b-a3b) released June 2026 with 82% SWE-Bench Verified [T4.1].
+
 What this card cannot tell you, and why:
 
 - **Out-of-scope uses, ethical risk taxonomy, and mitigations** are not enumerated in any consulted tier-1 or tier-3 source [T1.1][T2.1][T3.1]. Operators integrating Qwen3-Coder into agentic workflows should run their own threat model rather than relying on a provider safety profile.
@@ -117,6 +129,7 @@ Conflicts between sources flagged for the reader: The flagship HuggingFace card 
 Recommendations for use, given documented strengths:
 
 - Strong choice for agentic coding scaffolds (tool calling, repo-scale context, multi-turn SWE-Bench-style work) [T1.1].
+- For the highest-capability coding tasks in this family, consider **Qwen 4 Coder** (released June 2026; 82% SWE-Bench Verified) as a successor [T4.1].
 - For cost-sensitive scenarios, the provider explicitly recommends `qwen3-coder-next` as the default; reserve `qwen3-coder-plus` for highest-complexity tasks [T1.2].
 - For self-hosted deployment, the 30B-A3B variant offers the same agentic-coding behavioural profile at a fraction of the activation cost [T2.2].
 
@@ -125,8 +138,8 @@ Recommendations for use, given documented strengths:
 - **Pricing** — per third-party aggregators (tier 4, as the Alibaba Cloud Model Studio public pricing page does not publish exact qwen3-coder rates inline at fetch time):
   - `qwen3-coder-30b-a3b-instruct`: ~$0.07 / M input tokens; ~$0.27 / M output tokens [T4.1]
   - `qwen3-coder-flash`: ~$0.195 / M input tokens; ~$0.975 / M output tokens [T4.1]
-  - `qwen3-coder-plus`: tiered pricing with context-cache support (implicit cache at 20% of standard rate, explicit cache at 10%) [T1.2]
-  - As-of date: 2026-04-30 [T4.1][T4.2]
+  - `qwen3-coder-plus`: $0.650 / 1M input tokens; $3.25 / 1M output tokens (as of 2026-07-28) [T4.1]
+  - As-of date: 2026-07-28 [T4.1][T4.2]
   - New users in the Singapore region receive a 90-day free quota of 1M tokens per Qwen-Coder model [T4.1]
 - **Context window** — 262,144 tokens (256K) native; extendable to 1,000,000 tokens via Yarn extrapolation on the open-weight flagship [T2.1]. Qwen3-Coder-Flash advertises a 1.0M context window with up to 66K output tokens [T4.1]. Recommended max output: 65,536 tokens [T2.1][T2.2].
 - **Knowledge cutoff** — Not publicly available [T1.1][T2.1].

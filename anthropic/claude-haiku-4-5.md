@@ -4,34 +4,34 @@ parent: Anthropic
 model_name: anthropic/claude-haiku-4-5
 provider: Anthropic
 model_version: claude-haiku-4-5-20251001
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://platform.claude.com/docs/en/docs/about-claude/models/overview
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://platform.claude.com/docs/en/about-claude/pricing
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://www.anthropic.com/news/claude-haiku-4-5
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://www.anthropic.com/claude/haiku
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://assets.anthropic.com/m/99128ddd009bdcb/original/Claude-Haiku-4-5-System-Card.pdf
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: n/a (no Anthropic-published HuggingFace model card; weights are not openly distributed)
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: n/a (no arXiv release paper; the Anthropic system card is the closest equivalent and is cited as T1.5)
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: n/a (tier-1 sources were sufficient; no tier-4 fallbacks relied on)
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: Anthropic/claude-haiku-4-5

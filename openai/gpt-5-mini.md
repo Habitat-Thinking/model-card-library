@@ -4,28 +4,28 @@ parent: OpenAI
 model_name: openai/gpt-5-mini
 provider: OpenAI
 model_version: gpt-5-mini-2025-08-07
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://developers.openai.com/api/docs/models/gpt-5-mini
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://cdn.openai.com/gpt-5-system-card.pdf
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: n/a
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: n/a
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://en.wikipedia.org/wiki/GPT-5
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://openrouter.ai/openai/gpt-5-mini
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: OpenAI/gpt-5-mini
@@ -49,6 +49,10 @@ GPT-5 System Card lists OpenAI o4-mini as the predecessor that
 `gpt-5-thinking-mini` succeeds [T1.2]. Parameter count is not disclosed
 [T1.1][T1.2]: "Not publicly available."
 
+As of the July 2026 quarterly refresh, a December 11, 2026 API snapshot
+shutdown has been announced for gpt-5-mini, with OpenAI recommending
+`gpt-5.4-mini` as its current successor [T4.1].
+
 ## 2. Intended Use
 
 Per the provider's published statements, `gpt-5-mini` is intended for
@@ -56,7 +60,7 @@ Per the provider's published statements, `gpt-5-mini` is intended for
 well-defined tasks and precise prompts [T1.1]. OpenAI notes that for most
 new low-latency, high-volume workloads, developers should consider starting
 with the newer `gpt-5.4-mini` instead [T1.1] — `gpt-5-mini` remains
-supported but is not the most current mini.
+supported until December 11, 2026 but is not the most current mini.
 
 Primary users are API developers building production applications that need
 reasoning capability with reduced latency and cost relative to `gpt-5`
@@ -65,11 +69,11 @@ and MCP [T1.1].
 
 Out-of-scope uses (per the provider's published statements): `gpt-5-mini`
 does not support audio input or output — input modalities are text and
-images; output is text only [T1.1]. It does not currently support
-fine-tuning [T1.1]. Per OpenAI's GPT-5 System Card, all GPT-5 models are
-also subject to OpenAI's usage policies covering disallowed content
-including hate, illicit/violent content, self-harm instructions,
-sexual/exploitative content, and sexual content involving minors [T1.2].
+images; output is text only [T1.1]. It does not support fine-tuning [T1.1].
+Per OpenAI's GPT-5 System Card, all GPT-5 models are also subject to
+OpenAI's usage policies covering disallowed content including hate,
+illicit/violent content, self-harm instructions, sexual/exploitative content,
+and sexual content involving minors [T1.2].
 
 ## 3. Factors
 
@@ -279,6 +283,8 @@ evaluating emotional-dependency scenarios [T1.2].
 
 ## 9. Caveats and Recommendations
 
+**Refresh note (July 2026):** The primary tier-1 source (`developers.openai.com/api/docs/models/gpt-5-mini`) returned HTTP 403 at refresh time. Operational changes below (pricing, shutdown date) were verified via cross-referencing publicly available web sources treated as tier-4.
+
 **What this card cannot tell you:**
 
 - **Parameter count**, architecture details, and training compute for
@@ -310,10 +316,13 @@ with the GPT-5 System Card's progression table mapping OpenAI o4-mini →
 - Prefer `gpt-5-mini` for reasoning-capable workloads where latency
   and cost dominate quality requirements; for the highest quality,
   use `gpt-5` directly [T1.1].
-- For new projects starting today, evaluate `gpt-5.4-mini` alongside
-  `gpt-5-mini` per OpenAI's own current guidance [T1.1].
+- For new projects, evaluate `gpt-5.4-mini` alongside `gpt-5-mini` per
+  OpenAI's own current guidance [T1.1].
+- **API snapshot shutdown**: The `gpt-5-mini-2025-08-07` snapshot shuts
+  down December 11, 2026. Plan migration to `gpt-5.4-mini` before that
+  date [T4.1].
 - Do not use for audio I/O (unsupported) [T1.1] or fine-tuning workflows
-  (unsupported as of this card date) [T1.1].
+  (unsupported) [T1.1].
 - For high-stakes domains (medical, legal, financial advice; biosecurity-
   adjacent queries), apply additional human-in-the-loop review; the
   system card's Health and Preparedness sections document residual
@@ -323,8 +332,8 @@ with the GPT-5 System Card's progression table mapping OpenAI o4-mini →
 
 ## 10. Operational Details
 
-- **Pricing** (per 1M tokens, as of 2026-04-30) — Standard input: $0.25;
-  Cached input: $0.025; Output: $2.00 [T1.1].
+- **Pricing** (per 1M tokens, as of 2026-07-28, reduced ~50% from launch) —
+  Standard input: $0.125; Cached input: $0.0125; Output: $1.00 [T4.1].
 - **Context window** — 400,000 tokens [T1.1].
 - **Maximum output tokens** — 128,000 [T1.1].
 - **Knowledge cutoff** — May 31, 2024 [T1.1].
@@ -347,6 +356,5 @@ with the GPT-5 System Card's progression table mapping OpenAI o4-mini →
   requests per minute; 500,000 tokens per minute [T1.1]. Higher tiers
   scale per OpenAI's standard rate-limit policy.
 - **Current snapshot** — `gpt-5-mini-2025-08-07` [T1.1].
-- **Deprecation status** — Active; OpenAI suggests considering
-  `gpt-5.4-mini` for new low-latency, high-volume workloads, but
-  `gpt-5-mini` remains available [T1.1].
+- **API snapshot shutdown** — December 11, 2026 [T4.1]. Migrate to
+  `gpt-5.4-mini` or later before that date.

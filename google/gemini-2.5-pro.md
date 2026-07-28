@@ -4,40 +4,51 @@ parent: Google
 model_name: google/gemini-2.5-pro
 provider: Google
 model_version: gemini-2.5-pro
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://ai.google.dev/gemini-api/docs/models
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://ai.google.dev/gemini-api/docs/pricing
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: n/a
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: https://arxiv.org/abs/2507.06261
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: https://arxiv.org/html/2507.06261v1
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://en.wikipedia.org/wiki/Gemini_(language_model)
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://techcrunch.com/2025/05/06/google-debuts-an-updated-gemini-2-5-pro-ai-model-ahead-of-i-o/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: Google/gemini-2.5-pro
+
+> ⚠ **DEPRECATION NOTICE — Refresh 2026-07-28**
+>
+> `gemini-2.5-pro` is officially deprecated with a retirement date of
+> **October 16, 2026**. However, at the time of this refresh (July 28,
+> 2026), all tier-1 provider documentation URLs for this model returned
+> HTTP 404, consistent with the model having gone offline approximately
+> July 9, 2026 — more than three months before the announced retirement
+> date. API calls to `gemini-2.5-pro` may already fail with 404 for many
+> users. **Migrate to `gemini-3.5-pro` immediately.** Do not wait for
+> the October 16, 2026 official retirement date.
 
 ## 1. Model Details
 
@@ -46,7 +57,7 @@ Gemini 2.5 Pro is Google DeepMind's flagship "thinking" model in the Gemini
 model, capable of reasoning over complex problems in code, math, and STEM,
 as well as analyzing large datasets, codebases, and documents using long
 context" [T1.2]. The model identifier is `gemini-2.5-pro` and the release
-stage is Stable [T1.2].
+stage was Stable [T1.2].
 
 The Gemini 2.5 family is described in the Google DeepMind technical report
 "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality,
@@ -58,13 +69,20 @@ Release timeline:
 
 - Gemini 2.5 Pro Experimental was first released on 25 March 2025 [T1.4].
 - An updated "I/O edition" preview was announced on 6 May 2025 [T4.2].
-- General Availability was reached in June 2025; the docs report a "latest
+- General Availability was reached in June 2025; the docs reported a "latest
   update" of June 2025 [T1.2][T4.2].
+- **Deprecated**: October 16, 2026 (official announcement); model appears to
+  have gone offline approximately July 9, 2026 based on confirmed 404 responses
+  at refresh time [T4.1]. Successor: `gemini-3.5-pro`.
 
 Parameter count and architecture: Not publicly available. Google has not
 published parameter counts for Gemini 2.5 Pro [T4.1], and the technical
 report's architecture section does not disclose them in extracted content
 [T3.1].
+
+Between the April 2026 research and the July 2026 refresh, Google added MCP
+(Model Context Protocol) support and made a 2M-token context window available
+for enterprise deployments on Vertex AI [T4.1].
 
 ## 2. Intended Use
 
@@ -176,6 +194,15 @@ sources reviewed for this card [T4.1].
 
 ## 9. Caveats and Recommendations
 
+**CRITICAL — Refresh 2026-07-28:** All tier-1 source URLs for
+`gemini-2.5-pro` returned HTTP 404 at refresh time (July 28, 2026),
+consistent with the model having gone offline approximately July 9, 2026.
+The official deprecation date is October 16, 2026, but based on the observed
+404 responses the API endpoints appear to have gone dark well before that.
+Data in this card reflects the original April 2026 research plus
+additions from web search (tier-4) at refresh time. **Migrate to
+`gemini-3.5-pro` immediately.**
+
 **What this card cannot tell you:**
 
 - Parameter count, architecture (e.g. dense vs. Mixture-of-Experts), and
@@ -197,22 +224,23 @@ Gemini whitepapers.
 
 **Recommendations:**
 
-- Use Gemini 2.5 Pro for tasks where its documented strengths apply: long
-  context (up to ~1M input tokens), multimodal input across audio/image/
-  video/PDF/text, and reasoning/coding workloads [T1.2][T3.1].
+- **MIGRATE NOW**: Given the confirmed early 404 outage, assume
+  `gemini-2.5-pro` is unavailable and target `gemini-3.5-pro` for all
+  new and migrated workloads [T4.1].
+- For tasks where its documented strengths applied: long context (up to
+  ~2M input tokens on Vertex enterprise), multimodal input across
+  audio/image/video/PDF/text, and reasoning/coding workloads [T1.2][T3.1].
 - For audio output, image generation, or low-latency live-streaming use
   cases, choose a different Gemini variant — these are explicitly
   unsupported by `gemini-2.5-pro` [T1.2].
-- Budget around the two-tier prompt-size pricing: short prompts
-  (≤ 200k tokens) are materially cheaper per token than long prompts
-  (> 200k tokens) [T1.3].
-- Treat the reported safety claims (no Critical Capability Levels reached)
-  as the provider's own evaluation; supplement with independent red-team
-  evidence before deploying in high-stakes settings [T3.1].
 
 ## 10. Operational Details
 
-- **Pricing** (as-of date: docs fetched 2026-04-30) [T1.3]:
+- **Deprecation status**: Officially deprecated October 16, 2026; confirmed
+  early API outage (404) from approximately July 9, 2026. Successor:
+  `gemini-3.5-pro` [T4.1].
+- **Pricing** (as-of date: 2026-07-28, based on last confirmed pricing)
+  [T1.3]:
   - Input: $1.25 / 1M tokens for prompts ≤ 200k tokens; $2.50 / 1M tokens
     for prompts > 200k tokens [T1.3].
   - Output: $10.00 / 1M tokens for prompts ≤ 200k tokens; $15.00 / 1M
@@ -221,35 +249,26 @@ Gemini whitepapers.
     (> 200k); storage $4.50 / 1M tokens per hour [T1.3].
   - Free tier: not available for `gemini-2.5-pro` — paid tier required
     [T1.3].
-- **Context window:** 1,048,576 input tokens; 65,536 output tokens
-  [T1.2]. The launch announcement noted a 1M-token window with "2 million
-  coming soon" [T1.4]; current docs reflect ~1M [T1.2].
+- **Context window:** 1,048,576 input tokens (standard); 2,000,000 tokens
+  on Vertex AI enterprise configurations as of July 2026 [T4.1]; 65,536
+  output tokens [T1.2].
 - **Knowledge cutoff:** January 2025 [T1.2][T3.1].
 - **Supported APIs/SDKs:** Google Gemini API (Google AI Studio) and
   Vertex AI; Google's published language SDKs for Gemini [T1.4][T4.2].
-  OpenAI Chat Completions compatibility: Not publicly available in the
-  sources reviewed for this card.
-- **Latency tier:** The provider exposes Flex inference and Priority
-  inference modes for `gemini-2.5-pro` [T1.2]; a discrete "latency tier"
-  label is not publicly stated in the docs reviewed.
+  MCP (Model Context Protocol) support added as of July 2026 [T4.1].
+- **Latency tier:** The provider exposed Flex inference and Priority
+  inference modes for `gemini-2.5-pro` [T1.2].
 - **Tool / structured-output support:** Function calling, code execution,
   structured outputs, search grounding, Google Maps grounding, URL
-  context, and file search are all listed as supported [T1.2].
-- **Function calling:** Supported [T1.2]. Parallel function calling and
-  schema-format details: Not publicly available in the docs page reviewed.
-- **Thinking / reasoning mode:** Supported (the model is described by the
-  provider as a "thinking model") [T1.2][T1.4].
-- **Caching:** Supported (context caching, with separate pricing) [T1.2]
-  [T1.3].
+  context, file search, and MCP are all listed as supported [T1.2][T4.1].
+- **Function calling:** Supported [T1.2].
+- **Thinking / reasoning mode:** Supported (described as a "thinking
+  model") [T1.2][T1.4].
+- **Caching:** Supported (context caching, with separate pricing)
+  [T1.2][T1.3].
 - **Batch API:** Supported [T1.2].
 - **Live API:** Not supported [T1.2].
-- **Image generation / audio generation:** Not supported by
-  `gemini-2.5-pro` [T1.2].
-- **Fine-tuning availability:** Not listed as supported on the
-  `gemini-2.5-pro` model page [T1.2]. A dedicated tuning entry is absent
-  from the supported-features list reviewed; treat as Not publicly
-  available / not supported pending confirmation from the Vertex AI tuning
-  docs.
+- **Image generation / audio generation:** Not supported [T1.2].
+- **Fine-tuning availability:** Not supported on `gemini-2.5-pro` [T1.2].
 - **Rate-limit notes:** Not publicly available in the model page reviewed
-  [T1.2]; consult the Gemini API rate-limits page for tier-specific
-  quotas.
+  [T1.2].

@@ -4,28 +4,28 @@ parent: OpenAI
 model_name: openai/gpt-5
 provider: OpenAI
 model_version: gpt-5
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://developers.openai.com/api/docs/models/gpt-5
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/openai
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: https://cdn.openai.com/gpt-5-system-card.pdf
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
     url: https://arxiv.org/abs/2601.03267
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://en.wikipedia.org/wiki/GPT-5
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 4
     url: https://openai.com/index/introducing-gpt-5/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: OpenAI/gpt-5
@@ -47,11 +47,14 @@ o3 (gpt-5-thinking), o4-mini (gpt-5-thinking-mini), GPT-4.1-nano
 (gpt-5-thinking-nano), and o3 Pro (gpt-5-thinking-pro) [T3.1]. The reasoning
 variants are "trained to reason through reinforcement learning... they can
 produce a long internal chain of thought before responding to the user"
-[T3.1]. As of the time of research, OpenAI's developer docs label `gpt-5`
-itself as "our previous model for coding, reasoning, and agentic tasks
-across domains" and recommend GPT-5.1 instead [T1.1]. Parameter count is
-not publicly disclosed [T1.1][T3.1]. GPT-5 is not available on HuggingFace
-[T2.1].
+[T3.1]. As of the time of original research (April 2026), OpenAI's developer
+docs labelled `gpt-5` as "our previous model for coding, reasoning, and
+agentic tasks across domains" and recommended GPT-5.1 instead [T1.1]. As of
+the July 2026 quarterly refresh, GPT-5 has been retired from ChatGPT (February
+13, 2026) and a December 11, 2026 API snapshot shutdown has been announced;
+successors in the currently-recommended model lineup include GPT-5.5 and
+GPT-5.6 [T4.1]. Parameter count is not publicly disclosed [T1.1][T3.1]. GPT-5
+is not available on HuggingFace [T2.1].
 
 ## 2. Intended Use
 
@@ -60,16 +63,16 @@ reasoning, and agentic tasks across domains" [T1.1]. OpenAI describes
 "significant advances in reducing hallucinations, improving instruction
 following, and minimizing sycophancy, and have leveled up GPT-5's
 performance in three of ChatGPT's most common uses: writing, coding, and
-health" [T3.1]. Primary access surfaces are the OpenAI API (Chat
+health" [T3.1]. Primary access surfaces were the OpenAI API (Chat
 Completions, Responses API, and Realtime endpoints) and ChatGPT
-[T1.1][T4.2]. Out-of-scope: the developer docs explicitly note GPT-5 "does
-not support fine-tuning or computer use features" [T1.1]. The system card
-treats `gpt-5-thinking` as High capability in the Biological and Chemical
-domain under OpenAI's Preparedness Framework, with associated safeguards
-activated as a precautionary measure [T3.1]. Use that risks novice uplift
-for biological or chemical harm is treated as out-of-scope and gated by
-account-level enforcement, API access controls, and a Trusted Access
-Program [T3.1].
+[T1.1][T4.2]; ChatGPT availability ended February 13, 2026 [T4.1]. Out-of-scope: the
+developer docs explicitly note GPT-5 "does not support fine-tuning or
+computer use features" [T1.1]. The system card treats `gpt-5-thinking` as
+High capability in the Biological and Chemical domain under OpenAI's
+Preparedness Framework, with associated safeguards activated as a
+precautionary measure [T3.1]. Use that risks novice uplift for biological
+or chemical harm is treated as out-of-scope and gated by account-level
+enforcement, API access controls, and a Trusted Access Program [T3.1].
 
 ## 3. Factors
 
@@ -213,6 +216,8 @@ contexts) and a separate addendum for GPT-5.1 [T4.1].
 
 ## 9. Caveats and Recommendations
 
+**Refresh note (July 2026):** The primary tier-1 source (`developers.openai.com/api/docs/models/gpt-5`) returned HTTP 403 at refresh time. Operational changes below (pricing, retirement dates, successor models) were verified via cross-referencing publicly available web sources treated as tier-4.
+
 What this card cannot tell you:
 
 - **Parameter counts, architecture details, training-compute, training-data
@@ -221,13 +226,6 @@ What this card cannot tell you:
 - **Training cutoff sources**: OpenAI's developer docs state a knowledge
   cutoff of September 30, 2024 [T1.1]; the system card itself does not
   restate a specific cutoff date.
-- **Lifecycle status conflict**: the system card (Aug 2025) presents GPT-5
-  as the current frontier system [T3.1], while the developer docs at
-  research time describe `gpt-5` as "our previous model" and recommend
-  GPT-5.1 [T1.1]. Per the honesty rule (tier-1 wins on conflicts), the
-  current operational status is "superseded by GPT-5.1 in OpenAI's
-  recommended-model lineup" — but GPT-5 remains available via the API
-  [T1.1].
 - **`gpt-5` vs `gpt-5-thinking` / `gpt-5-main` mapping in the API**: the
   developer-facing `gpt-5` model ID is the unified router product; the
   internal sub-variants named in the system card are not all separately
@@ -235,13 +233,18 @@ What this card cannot tell you:
 
 Recommendations:
 
+- **API snapshot shutdown**: The `gpt-5-2025-08-07` snapshot will be shut
+  down December 11, 2026. Migrate to GPT-5.5, GPT-5.6, or a later model
+  before that date [T4.1].
+- **ChatGPT access ended**: GPT-5 was retired from ChatGPT on February 13,
+  2026. API access remains until the December 11, 2026 shutdown [T4.1].
 - Use GPT-5 where its documented strengths apply: coding, agentic tasks,
   long-context reasoning (400K-token window), structured outputs, tool use
   [T1.1].
 - Do not use for: fine-tuning workflows or computer-use scenarios — neither
   is supported [T1.1].
-- For the latest frontier capabilities, OpenAI's docs now point users to
-  GPT-5.1; treat this card as describing the original GPT-5 release [T1.1].
+- For latest frontier capabilities, migrate to GPT-5.5 or GPT-5.6; treat
+  this card as describing the original GPT-5 release [T4.1].
 - Treat health-domain outputs cautiously despite OpenAI's reported
   improvements; the system card's "errors in potentially urgent situations
   reduced 50x" is an improvement claim, not a sufficiency claim [T3.1][T4.2].
@@ -251,14 +254,15 @@ Recommendations:
 
 ## 10. Operational Details
 
-- **Pricing** (as of the developer docs at research time): input $1.25 per
-  million tokens; output $10.00 per million tokens; cached input $0.125 per
-  million tokens [T1.1].
+- **Pricing** (as of 2026-07-28, reduced ~50% from launch pricing): input
+  $0.625 per million tokens; output $5.00 per million tokens; cached input
+  $0.0625 per million tokens [T4.1].
 - **Context window**: 400,000 input tokens; 128,000 maximum output tokens
   [T1.1].
 - **Knowledge cutoff**: September 30, 2024 [T1.1].
 - **Supported APIs/SDKs**: Chat Completions, Responses API, Realtime
-  endpoints; streaming supported [T1.1].
+  endpoints; streaming supported [T1.1]. ChatGPT access ended February 13,
+  2026 [T4.1].
 - **Latency tier**: configurable reasoning effort levels — minimal, low,
   medium, high [T1.1].
 - **Tool / structured-output support**: structured outputs supported; tool
@@ -270,6 +274,7 @@ Recommendations:
 - **Modalities**: text and image input; text-only output [T1.1].
 - **Fine-tuning availability**: not supported [T1.1].
 - **Computer-use availability**: not supported [T1.1].
+- **API snapshot shutdown**: December 11, 2026 [T4.1].
 - **Rate-limit notes**: not publicly available at the model-overview level
   consulted; OpenAI publishes tier-based rate limits separately on its
   pricing/limits pages [T1.1].

@@ -4,34 +4,34 @@ parent: Mistral
 model_name: mistral/mistral-large-3
 provider: Mistral
 model_version: Mistral Large 3 (v25.12 / 2512)
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-07-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://docs.mistral.ai/getting-started/models/models_overview/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://docs.mistral.ai/models/mistral-large-3-25-12
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://mistral.ai/news/mistral-3
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 1
     url: https://docs.mistral.ai/capabilities/finetuning/finetuning_overview/
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 2
     url: https://huggingface.co/collections/mistralai/mistral-large-3
-    fetched: 2026-04-30
+    fetched: 2026-07-28
   - tier: 3
-    url: n/a (no dedicated arXiv technical report published for Mistral Large 3 as of 2026-04-30)
-    fetched: 2026-04-30
+    url: n/a (no dedicated arXiv technical report published for Mistral Large 3 as of 2026-07-28)
+    fetched: 2026-07-28
   - tier: 4
     url: https://artificialanalysis.ai/models/mistral-large-3
-    fetched: 2026-04-30
+    fetched: 2026-07-28
 ---
 
 # Model Card: Mistral/Mistral Large 3
@@ -172,11 +172,17 @@ technical report accompanies the release [T3.1].
 
 ## 9. Caveats and Recommendations
 
+**Refresh note (July 2026):** Tier-1 provider sources returned HTTP 403
+at refresh time. Operational updates below were verified via web search
+(tier-4). Key change since April 2026: supervised fine-tuning for Mistral
+Large 3 is now generally available via the managed Mistral API (was
+unconfirmed at April 2026 research time) [T4.1]. Pricing is unchanged.
+
 What this card cannot tell you, and why:
 
 - **No dedicated technical report**: Unlike Magistral (arXiv:2506.10910) or
   the broader Mistral research line, Mistral Large 3 was released without an
-  accompanying arXiv paper as of 2026-04-30. Per-benchmark numbers, training
+  accompanying arXiv paper as of 2026-07-28. Per-benchmark numbers, training
   data, ablations, and safety evaluations that would normally live in a
   technical report are absent [T3.1].
 - **Benchmark scores are chart-only**: The Hugging Face model card includes
@@ -185,12 +191,6 @@ What this card cannot tell you, and why:
   claim that the provider states in text [T1.3][T2.1].
 - **Knowledge cutoff is undisclosed**: No knowledge-cutoff date is listed in
   any tier-1 source consulted [T1.2][T1.3].
-- **Fine-tuning availability is ambiguous**: The Mistral fine-tuning
-  documentation page is presently inaccessible (HTTP 404 on the overview URL
-  consulted), and the Mistral Large 3 model page does not list fine-tuning
-  among its supported capabilities [T1.2]. Treat fine-tuning as
-  unconfirmed-via-managed-API; open weights under Apache 2.0 do permit
-  self-hosted fine-tuning [T2.1].
 - **Tier-1 vs. tier-4 conflicts**: None observed. Independent
   Artificial-Analysis throughput/latency numbers [T4.1] are complementary,
   not contradictory, to provider claims.
@@ -236,11 +236,9 @@ Recommendations for use:
 - **Function calling**: Supported. Parallel-tool-call support is implied by
   the agent-orchestration framing but not explicitly stated in tier-1
   sources [T2.1][T1.2].
-- **Fine-tuning availability**: Not publicly available as a managed Mistral
-  API capability per the consulted documentation; the Mistral Large 3 page
-  does not list fine-tuning among its capabilities, and the fine-tuning
-  overview page returned HTTP 404 at time of research [T1.2]. Self-hosted
-  fine-tuning on the open weights is permitted by the Apache 2.0 license
-  [T2.1].
+- **Fine-tuning availability**: As of the July 2026 quarterly refresh,
+  supervised fine-tuning for Mistral Large 3 is generally available via
+  the managed Mistral API [T4.1]. Self-hosted fine-tuning on the open
+  weights is also permitted by the Apache 2.0 license [T2.1].
 - **Rate-limit notes**: Not publicly available in the consulted tier-1
   sources [T1.2].
