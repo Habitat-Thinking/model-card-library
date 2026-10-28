@@ -4,9 +4,9 @@ parent: Meta
 model_name: meta/llama-4
 provider: Meta
 model_version: Llama 4 (Scout 17B-16E, Maverick 17B-128E; Behemoth in preview)
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
@@ -29,6 +29,9 @@ sources:
   - tier: 4
     url: https://arxiv.org/abs/2510.12178
     fetched: 2026-04-30
+  - tier: 4
+    url: https://www.startuphub.ai/news/figure-mark-zuckerberg-dual-track-open-closed-2026-06-05
+    fetched: 2026-10-28
 ---
 
 # Model Card: Meta/llama-4
@@ -36,7 +39,11 @@ sources:
 ## 1. Model Details
 
 Llama 4 is a family of natively multimodal, mixture-of-experts (MoE) language
-models released by Meta on April 5, 2025 [T1.1][T2.1]. The family announced at
+models released by Meta on April 5, 2025 [T1.1][T2.1]. These models continue
+to be available as open-weights. Separately, Meta launched the proprietary
+"Muse" AI product brand in mid-2026 — Muse Spark was announced around June 2026
+and Muse Glimmer on August 10, 2026 — representing a closed-weights commercial
+track operating alongside the Llama open-weights track [T4.3]. The family announced at
 launch comprises three variants:
 
 - **Llama 4 Scout** — 17B active parameters across 16 experts, 109B total
@@ -227,6 +234,10 @@ cybersecurity, ML-adversarial, and multilingual content specialists
 
 **What this card cannot tell you:**
 
+- **Meta Muse proprietary track**: Meta launched a separate closed-weights
+  commercial AI brand ("Muse") in mid-2026 alongside the open Llama track
+  [T4.3]. This card covers only the Llama 4 open-weight models; Muse model
+  cards are not included in this library.
 - **No dedicated Meta-authored Llama 4 arXiv release paper** was found
   during research; the survey paper at arXiv:2510.12178 references Llama
   4 but is not the official release paper [T4.2]. Tier-3 is therefore

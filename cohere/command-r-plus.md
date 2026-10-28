@@ -4,9 +4,9 @@ parent: Cohere
 model_name: cohere/command-r-plus
 provider: Cohere
 model_version: command-r-plus-08-2024 (latest live); command-r-plus-04-2024 (original, deprecated 2025-09-15)
-last_researched: 2026-04-30
+last_researched: 2026-10-28
 card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://docs.cohere.com/docs/command-r-plus
@@ -41,6 +41,19 @@ sources:
   - tier: 4
     url: https://docs.oracle.com/en-us/iaas/Content/generative-ai/cohere-command-r-plus-08-2024.htm
     fetched: 2026-04-30
+  - tier: 4
+    url: https://community.vercel.com/t/command-r-and-r-models-are-deprecated/23214
+    fetched: 2026-10-28
+---
+
+## Refresh status: REFUSED on 2026-10-28
+
+Model retired. Cohere deprecated `command-r-plus` / `command-r-plus-08-2024` in March 2026; the model was retired from AWS Bedrock on August 19, 2026 and from Oracle OCI on July 30, 2026. The existing card is preserved below for historical reference. No content updates were made.
+
+Replacement model: cohere/command-a (Command A, Cohere's current recommended enterprise model).
+
+Source: [T4.5] https://community.vercel.com/t/command-r-and-r-models-are-deprecated/23214
+
 ---
 
 # Model Card: Cohere/command-r-plus

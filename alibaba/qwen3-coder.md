@@ -4,9 +4,9 @@ parent: Alibaba
 model_name: alibaba/qwen3-coder
 provider: Alibaba
 model_version: qwen3-coder (family; flagship Qwen3-Coder-480B-A35B-Instruct, plus Qwen3-Coder-30B-A3B-Instruct, Qwen3-Coder-Flash, Qwen3-Coder-Plus, Qwen3-Coder-Next variants)
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://qwenlm.github.io/blog/qwen3-coder/
@@ -29,6 +29,9 @@ sources:
   - tier: 4
     url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
     fetched: 2026-04-30
+  - tier: 4
+    url: https://dev.to/jovan_chan_9500711396d4e6/qwen3-coder-next-review-2026-80b-params-3b-active-and-the-cheapest-credible-coding-agent-api-5h3j
+    fetched: 2026-10-28
 ---
 
 # Model Card: Alibaba/qwen3-coder
@@ -39,7 +42,7 @@ Qwen3-Coder is a family of code-specialised large language models released by th
 
 A smaller open-weight sibling, Qwen3-Coder-30B-A3B-Instruct, is also released: 30.5B total / 3.3B active parameters, 48 layers, 32 Q / 4 KV heads, 128 experts with 8 activated [T2.2]. Both flagship variants are distributed under the Apache 2.0 license on HuggingFace [T2.1][T2.2].
 
-The Alibaba Cloud Model Studio product surface exposes the family under additional API names: `qwen3-coder-plus` (for highest-quality complex tasks), `qwen3-coder-next` (the recommended balance of quality, speed, and cost), and `qwen3-coder-flash` [T1.2][T4.1]. Qwen3-Coder-Next is described in a follow-up technical report (arXiv:2603.00729, submitted February 28, 2026) as an 80-billion-total / 3-billion-active-parameter MoE model targeted at coding agents, with both base and instruction-tuned open-weight versions released [T3.1].
+The Alibaba Cloud Model Studio product surface exposes the family under additional API names: `qwen3-coder-plus` (for highest-quality complex tasks), `qwen3-coder-next` (the recommended balance of quality, speed, and cost), and `qwen3-coder-flash` [T1.2][T4.1]. Qwen3-Coder-Next was released on February 4, 2026 as an 80-billion-total / 3-billion-active-parameter MoE model targeted at coding agents, with both base and instruction-tuned open-weight versions available under the Apache 2.0 license [T3.1][T4.3]. A follow-up technical report describing the model was submitted to arXiv on February 28, 2026 (arXiv:2603.00729) [T3.1]. Third-party reviewers note that Qwen3-Coder-Next supports a ~262K context window and is positioned as the most cost-effective credible coding agent API in its active-parameter class [T4.3].
 
 The models operate in non-thinking mode only — they do not emit `<think></think>` blocks [T2.1][T2.2].
 

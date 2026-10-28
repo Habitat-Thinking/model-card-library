@@ -4,9 +4,9 @@ parent: OpenAI
 model_name: openai/gpt-5-mini
 provider: OpenAI
 model_version: gpt-5-mini-2025-08-07
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://developers.openai.com/api/docs/models/gpt-5-mini
@@ -310,8 +310,10 @@ with the GPT-5 System Card's progression table mapping OpenAI o4-mini →
 - Prefer `gpt-5-mini` for reasoning-capable workloads where latency
   and cost dominate quality requirements; for the highest quality,
   use `gpt-5` directly [T1.1].
-- For new projects starting today, evaluate `gpt-5.4-mini` alongside
-  `gpt-5-mini` per OpenAI's own current guidance [T1.1].
+- For new projects starting today, strongly prefer `gpt-5.4-mini` over
+  `gpt-5-mini` per OpenAI's own current guidance: `gpt-5.4-mini` is
+  reported to be more than 2x faster and priced at approximately $0.75 /
+  1M input tokens and $4.50 / 1M output tokens [T1.1].
 - Do not use for audio I/O (unsupported) [T1.1] or fine-tuning workflows
   (unsupported as of this card date) [T1.1].
 - For high-stakes domains (medical, legal, financial advice; biosecurity-
@@ -347,6 +349,8 @@ with the GPT-5 System Card's progression table mapping OpenAI o4-mini →
   requests per minute; 500,000 tokens per minute [T1.1]. Higher tiers
   scale per OpenAI's standard rate-limit policy.
 - **Current snapshot** — `gpt-5-mini-2025-08-07` [T1.1].
-- **Deprecation status** — Active; OpenAI suggests considering
-  `gpt-5.4-mini` for new low-latency, high-volume workloads, but
-  `gpt-5-mini` remains available [T1.1].
+- **Deprecation status** — Active (legacy). OpenAI explicitly recommends
+  `gpt-5.4-mini` (released March 17, 2026) for new low-latency,
+  high-volume workloads; `gpt-5.4-mini` is more than 2x faster at
+  approximately $0.75 / 1M input and $4.50 / 1M output tokens. `gpt-5-mini`
+  remains available [T1.1].

@@ -4,9 +4,9 @@ parent: Mistral
 model_name: mistral/mistral-large-3
 provider: Mistral
 model_version: Mistral Large 3 (v25.12 / 2512)
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://docs.mistral.ai/getting-started/models/models_overview/

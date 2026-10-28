@@ -4,9 +4,9 @@ parent: Google
 model_name: google/gemini-2.5-pro
 provider: Google
 model_version: gemini-2.5-pro
-last_researched: 2026-04-30
+last_researched: 2026-10-28
 card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://ai.google.dev/gemini-api/docs/models
@@ -35,6 +35,19 @@ sources:
   - tier: 4
     url: https://techcrunch.com/2025/05/06/google-debuts-an-updated-gemini-2-5-pro-ai-model-ahead-of-i-o/
     fetched: 2026-04-30
+  - tier: 4
+    url: https://gcpstudyhub.com/blog/google-is-retiring-gemini-2-5-on-agent-platform-what-you-need-to-know-and-do-before-october-2026
+    fetched: 2026-10-28
+---
+
+## Refresh status: REFUSED on 2026-10-28
+
+Model retired. Google retired `gemini-2.5-pro` from Vertex AI and the Gemini API on October 20, 2026. The existing card is preserved below for historical reference. No content updates were made.
+
+Replacement model: google/gemini-3.x Pro (Gemini 3.x family, successor generation).
+
+Source: [T4.5] https://gcpstudyhub.com/blog/google-is-retiring-gemini-2-5-on-agent-platform-what-you-need-to-know-and-do-before-october-2026
+
 ---
 
 # Model Card: Google/gemini-2.5-pro

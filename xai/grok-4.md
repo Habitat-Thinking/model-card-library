@@ -4,9 +4,9 @@ parent: xAI
 model_name: xai/grok-4
 provider: xAI
 model_version: grok-4 (model card last updated 2025-08-20)
-last_researched: 2026-04-30
+last_researched: 2026-10-28
 card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://docs.x.ai/docs/models
@@ -35,6 +35,19 @@ sources:
   - tier: 4
     url: https://en.wikipedia.org/wiki/Grok_(chatbot)
     fetched: 2026-04-30
+  - tier: 4
+    url: https://help.apiyi.com/en/grok-4-3-release-xai-api-model-retirement-en.html
+    fetched: 2026-10-28
+---
+
+## Refresh status: REFUSED on 2026-10-28
+
+Model retired. xAI shut down the `grok-4` API endpoint on May 15, 2026 and replaced it with Grok 4.7. The existing card is preserved below for historical reference. No content updates were made.
+
+Replacement model: xai/grok-4-7 (Grok 4.7, released May 15, 2026).
+
+Source: [T4.4] https://help.apiyi.com/en/grok-4-3-release-xai-api-model-retirement-en.html
+
 ---
 
 # Model Card: xAI/grok-4
