@@ -4,9 +4,9 @@ parent: Anthropic
 model_name: anthropic/claude-haiku-4-5
 provider: Anthropic
 model_version: claude-haiku-4-5-20251001
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://platform.claude.com/docs/en/docs/about-claude/models/overview
@@ -32,6 +32,9 @@ sources:
   - tier: 4
     url: n/a (tier-1 sources were sufficient; no tier-4 fallbacks relied on)
     fetched: 2026-04-30
+  - tier: 4
+    url: https://af.net/realtime/anthropic-launches-claude-haiku-5-5-with-lower-costs-and-expanded-features/
+    fetched: 2026-10-28
 ---
 
 # Model Card: Anthropic/claude-haiku-4-5
@@ -44,6 +47,8 @@ its "small, fast" model class [T1.5]. The Claude API ID is
 the ID is `anthropic.claude-haiku-4-5-20251001-v1:0`, and on GCP Vertex AI it
 is `claude-haiku-4-5@20251001` [T1.1]. The system card is dated October 2025
 and the model was announced as available on October 15, 2025 [T1.3, T1.5].
+As of October 7, 2026, Claude Haiku 5.5 was released as the successor model,
+making Haiku 4.5 a legacy offering [T4.2].
 The model is a hybrid reasoning model — by default it answers rapidly, but
 "extended thinking mode" can be toggled on [T1.5]. Parameter count is not
 publicly available (Anthropic does not disclose). The model accepts text and
@@ -313,3 +318,7 @@ URLs that were then fetched directly.
   US-only inference via `inference_geo` carries a 1.1x multiplier on
   all token categories for Opus 4.7, Opus 4.6, and newer models
   [T1.2].
+- **Deprecation status:** Active (legacy). Claude Haiku 5.5 released
+  October 7, 2026 is the current small-model successor. Retirement not
+  before October 15, 2026 (12-month minimum from release date per
+  Anthropic policy) [T4.2].

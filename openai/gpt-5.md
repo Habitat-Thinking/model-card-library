@@ -4,9 +4,9 @@ parent: OpenAI
 model_name: openai/gpt-5
 provider: OpenAI
 model_version: gpt-5
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://developers.openai.com/api/docs/models/gpt-5
@@ -26,6 +26,9 @@ sources:
   - tier: 4
     url: https://openai.com/index/introducing-gpt-5/
     fetched: 2026-04-30
+  - tier: 4
+    url: https://qcode.cc/en/gpt-5-o3-snapshot-retirement-dec-11
+    fetched: 2026-10-28
 ---
 
 # Model Card: OpenAI/gpt-5
@@ -49,7 +52,9 @@ variants are "trained to reason through reinforcement learning... they can
 produce a long internal chain of thought before responding to the user"
 [T3.1]. As of the time of research, OpenAI's developer docs label `gpt-5`
 itself as "our previous model for coding, reasoning, and agentic tasks
-across domains" and recommend GPT-5.1 instead [T1.1]. Parameter count is
+across domains" and recommend GPT-5.1 instead [T1.1]. The dated snapshot
+`gpt-5-2025-08-07` is scheduled for API shutdown on December 11, 2026, with
+`gpt-5.6-sol` listed as the recommended replacement [T4.3]. Parameter count is
 not publicly disclosed [T1.1][T3.1]. GPT-5 is not available on HuggingFace
 [T2.1].
 
@@ -273,3 +278,6 @@ Recommendations:
 - **Rate-limit notes**: not publicly available at the model-overview level
   consulted; OpenAI publishes tier-based rate limits separately on its
   pricing/limits pages [T1.1].
+- **Deprecation status:** Active (legacy). The dated snapshot
+  `gpt-5-2025-08-07` shuts down December 11, 2026; the recommended
+  replacement is `gpt-5.6-sol` [T4.3].

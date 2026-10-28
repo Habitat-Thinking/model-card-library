@@ -4,9 +4,9 @@ parent: Anthropic
 model_name: anthropic/claude-opus-4-7
 provider: Anthropic
 model_version: claude-opus-4-7
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://platform.claude.com/docs/en/docs/about-claude/models
@@ -41,15 +41,19 @@ sources:
   - tier: 4
     url: https://www.helpnetsecurity.com/2026/04/16/claude-opus-4-7-released/
     fetched: 2026-04-30
+  - tier: 4
+    url: https://chatforest.com/builders-log/claude-opus-4-7-fast-mode-deprecation-july-24-migrate-opus-4-8-builder-guide/
+    fetched: 2026-10-28
 ---
 
 # Model Card: Anthropic/claude-opus-4-7
 
 ## 1. Model Details
 
-Claude Opus 4.7 is Anthropic's most capable generally available model as of
-this card's research date, positioned as a frontier model for complex
-reasoning and agentic coding [T1.2]. The Claude API model ID is
+Claude Opus 4.7 was Anthropic's most capable generally available model at its
+research date (April 2026), positioned as a frontier model for complex
+reasoning and agentic coding [T1.2]. As of September 22, 2026, Claude Opus 5.5
+was released as the new flagship, making Opus 4.7 a legacy offering [T4.3]. The Claude API model ID is
 `claude-opus-4-7`, with the same value used as both the canonical ID and
 alias [T1.1]. It was announced as generally available on April 16, 2026
 [T1.4][T4.1]. The model is part of the Claude 4 family, alongside Claude
@@ -289,5 +293,7 @@ Recommendations for use:
   vary by tier and are not enumerated on the pricing page [T1.3].
 - **Extended thinking**: No (removed for Opus 4.7) [T1.1][T1.2].
 - **Adaptive thinking**: Yes; off by default [T1.1][T1.2].
+- **Fast mode**: Deprecated July 24, 2026 [T4.3]. Fast mode was available at time of original research (April 2026) as a lower-latency response mechanism; it has since been removed.
+- **Deprecation status:** Active (legacy). Claude Opus 5.5 released September 22, 2026 is the current flagship successor [T4.3].
 - **Vision**: Yes; high-resolution images up to 2576px / 3.75MP with 1:1
   pixel-to-coordinate mapping [T1.2].

@@ -4,9 +4,9 @@ parent: Anthropic
 model_name: anthropic/claude-sonnet-4-6
 provider: Anthropic
 model_version: claude-sonnet-4-6
-last_researched: 2026-04-30
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://platform.claude.com/docs/en/about-claude/models/overview
@@ -35,13 +35,16 @@ sources:
   - tier: 4
     url: https://venturebeat.com/technology/anthropics-sonnet-4-6-matches-flagship-ai-performance-at-one-fifth-the-cost
     fetched: 2026-04-30
+  - tier: 4
+    url: https://af.net/realtime/anthropic-releases-claude-sonnet-5-5-with-enhanced-coding-efficiency/
+    fetched: 2026-10-28
 ---
 
 # Model Card: Anthropic/claude-sonnet-4-6
 
 ## 1. Model Details
 
-Claude Sonnet 4.6 is a large language model from Anthropic, released February 17, 2026 [T1.3]. It is the mid-tier model in Anthropic's current Claude 4 family, positioned between Claude Haiku 4.5 and Claude Opus 4.7, and described by Anthropic as "the best combination of speed and intelligence" [T1.1]. The Claude API model ID is `claude-sonnet-4-6`, with the same identifier serving as both the canonical ID and alias on the Claude API; AWS Bedrock exposes it as `anthropic.claude-sonnet-4-6` and Google Vertex AI as `claude-sonnet-4-6` [T1.1].
+Claude Sonnet 4.6 is a large language model from Anthropic, released February 17, 2026 [T1.3]. It is a mid-tier model in Anthropic's Claude 4 family, positioned between Claude Haiku 4.5 and Claude Opus 4.7, and described by Anthropic as "the best combination of speed and intelligence" [T1.1]. As of September 28, 2026, Claude Sonnet 5.5 was released as the current mid-tier offering, making Sonnet 4.6 a legacy model [T4.3]. The Claude API model ID is `claude-sonnet-4-6`, with the same identifier serving as both the canonical ID and alias on the Claude API; AWS Bedrock exposes it as `anthropic.claude-sonnet-4-6` and Google Vertex AI as `claude-sonnet-4-6` [T1.1].
 
 Anthropic characterises Sonnet 4.6 as a "hybrid reasoning model with superior intelligence for agents" [T1.4]. It supports both extended thinking mode and adaptive thinking (the "effort" parameter), allowing developers to direct different degrees of reasoning effort depending on task difficulty [T1.5]. Parameter count is not publicly disclosed [T1.5]. The model underwent substantial post-training and fine-tuning after pretraining, with the stated intention of producing a helpful, honest, and harmless assistant [T1.5].
 
@@ -263,10 +266,10 @@ Third-party assessments were conducted (system card section 6.5) [T1.5].
   - Tool use system prompt token count: 346 tokens (`auto`/`none`), 313 tokens (`any`/`tool`) [T1.2]
   - Specific tools: bash (245 input tokens), text editor `text_editor_20250429` (700 tokens), web search ($10 per 1,000 searches), web fetch (no additional cost), code execution, computer use (735 tokens per tool definition + 466–499 system-prompt tokens) [T1.2]
 - **Function calling:** Supported, including parallel tool calls per the Claude API documentation [T1.2]
-- **Extended/adaptive thinking:** Both extended thinking and adaptive thinking ("effort" parameter) supported [T1.1][T1.5]
+- **Extended/adaptive thinking:** Adaptive thinking ("effort" parameter) supported [T1.1][T1.5]. Manual extended thinking via the `budget_tokens` parameter has been deprecated on Sonnet 4.6 but remains functional [T4.3]
 - **Multimodal:** Text and image input; text output only; no audio, video, speech, or embeddings support [T1.1][T4.1]
 - **Prompt caching:** Min 1,024 tokens per checkpoint, max 4 checkpoints per request, 5-minute or 1-hour TTL options; supported on `system`, `messages`, and `tools` fields [T4.1]
 - **Fine-tuning availability:** Not publicly available in the sources consulted. Anthropic's published docs do not list a fine-tuning offering for Sonnet 4.6 as of 2026-04-30 [T1.1][T1.2].
 - **Rate-limit notes:** Rate limits vary by tier (Tier 1 through Tier 4, plus Enterprise); detailed limits are in the rate limits documentation [T1.2]
 - **Data residency:** US-only inference via the `inference_geo` parameter incurs a 1.1x multiplier on all token pricing categories on the Claude API; regional/multi-region endpoints on Bedrock and Vertex AI carry a 10% premium over global endpoints [T1.2]
-- **Deprecation status:** Active; no end-of-life date specified [T4.1]
+- **Deprecation status:** Active (legacy). Claude Sonnet 5.5 released September 28, 2026 is the current mid-tier successor. Retirement not before February 17, 2027 (12-month minimum from release date per Anthropic policy) [T4.3]

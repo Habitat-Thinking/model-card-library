@@ -4,9 +4,9 @@ parent: OpenAI
 model_name: openai/gpt-5.5
 provider: OpenAI
 model_version: gpt-5.5 (snapshot gpt-5.5-2026-04-23)
-last_researched: 2026-05-01
-card_version: 0.1.0
-researcher: model-card-researcher (claude-opus-4-7[1m])
+last_researched: 2026-10-28
+card_version: 0.2.0
+researcher: scheduled-quarterly-refresh-agent (claude-sonnet-4-6)
 sources:
   - tier: 1
     url: https://developers.openai.com/api/docs/models/gpt-5.5
@@ -35,6 +35,9 @@ sources:
   - tier: 4
     url: https://www.cnbc.com/2026/04/23/openai-announces-latest-artificial-intelligence-model.html
     fetched: 2026-05-01
+  - tier: 4
+    url: https://aiidelist.com/blog/gpt-5-5-retirement-october-14
+    fetched: 2026-10-28
 ---
 
 # Model Card: OpenAI/gpt-5.5
@@ -42,7 +45,10 @@ sources:
 ## 1. Model Details
 
 GPT-5.5 is a frontier large language model released by OpenAI on April 23,
-2026, with API availability following on April 24, 2026 [T1.5][T4.2]. Per
+2026, with API availability following on April 24, 2026 [T1.5][T4.2]. On
+October 14, 2026, GPT-5.5 was retired from ChatGPT and Codex; the OpenAI
+API remains active as of this refresh date (October 28, 2026). The recommended
+Codex replacement is `gpt-5.6-sol` [T4.4]. Per
 OpenAI's developer docs the model is classified as "a new class of
 intelligence for coding and professional work" [T1.1]. The provider exposes
 two API model IDs: `gpt-5.5` (snapshot `gpt-5.5-2026-04-23`) and
@@ -299,6 +305,9 @@ Recommendations:
 - **Rate limits**: vary by tier (Tier 1–5), ranging from 500 to 15,000
   requests per minute and up to 40M tokens monthly at the highest tier
   [T1.1].
-- **Distribution surfaces**: ChatGPT (Plus, Pro, Business, Enterprise),
-  Codex, OpenAI API, Amazon Bedrock [T1.5][T4.2]. Free-tier users do not
-  have access at launch [T4.1].
+- **Distribution surfaces**: OpenAI API and Amazon Bedrock remain active.
+  Retired from ChatGPT and Codex on October 14, 2026; `gpt-5.6-sol` is
+  the recommended Codex replacement [T4.4]. (At launch: ChatGPT Plus,
+  Pro, Business, Enterprise, Codex, OpenAI API, Amazon Bedrock [T1.5][T4.2].)
+- **Deprecation status**: Partially retired (ChatGPT/Codex removed Oct 14,
+  2026); API active as of refresh date October 28, 2026 [T4.4].
